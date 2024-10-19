@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADQP</title>
+</head>
+<body>
+    <h1>All trip data</h1>
+    <p>Here is the list of all trips</p>
+
+    <h2>List of trips</h2>
+    <ul>
+    {% for trip in trips %}
+<ul>
+    {% for trip in trips %}
+        <li>{{ trip.id }} - {{ trip.ORIGIN_AIRPORT_ID }} - {{ trip.ORIGIN_AIRPORT_SEQ_ID }} - {{ trip.ORIGIN_CITY_MARKET_ID }} - {{ trip.DEST_AIRPORT_ID }} - {{ trip.DEST_AIRPORT_SEQ_ID }} - {{ trip.DEST_CITY_MARKET_ID }}</li>
+    {% endfor %}
+</ul>
+
+      
+    {% endfor %}
+</ul>
+
+</body>
+</html>

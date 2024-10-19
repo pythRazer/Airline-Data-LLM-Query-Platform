@@ -1,0 +1,128 @@
+### Create a new Market Field (POST request)
+POST http://127.0.0.1:8000/adqp/api/market-fields/
+Content-Type: application/json
+
+{
+  "itin_id": 202143381835,
+  "mkt_id": 20214338183501,
+  "mkt_coupons": 2,
+  "year": 2021,
+  "quarter": 4,
+  "origin_airport_id": 10721,
+  "origin_airport_seq_id": 1072102,
+  "origin_city_market_id": 30721,
+  "origin": "BOS",
+  "origin_country": "US",
+  "origin_state_fips": 25,
+  "origin_state": "MA",
+  "origin_state_name": "Massachusetts",
+  "origin_wac": 13,
+  "dest_airport_id": 10792,
+  "dest_airport_seq_id": 1079206,
+  "dest_city_market_id": 30792,
+  "dest": "BUF",
+  "dest_country": "US",
+  "dest_state_fips": 36,
+  "dest_state": "NY",
+  "dest_state_name": "New York",
+  "dest_wac": "22",
+  "airport_group": "BOS:EWR:BUF",
+  "wac_group": "13:21:22",
+  "tk_carrier_change": 0,
+  "op_carrier_change": 0,
+  "rp_carrier": "UA",
+  "tk_carrier": "UA",
+  "op_carrier": "UA",
+  "bulk_fare": 0,
+  "passengers": 1,
+  "mkt_fare": 293.37,
+  "mkt_distance": 1047,
+  "mkt_miles_flown": 1047,
+  "non_stop_miles": 634,
+  "itin_geo_type": 2,
+  "mkt_geo_type": 2,
+  "tk_carrier_group": "UA:UA",
+  "op_carrier_group": "UA:YX",
+  "mkt_distance_group": 5
+}
+
+### Get all Market Fields (GET request)
+GET http://127.0.0.1:8000/adqp/api/market-fields/
+
+### Get a single Market Field by ID (GET request)
+GET http://127.0.0.1:8000/adqp/api/market-fields/1/
+
+### Update a Market Field (PUT request)
+//  Update year
+PUT http://127.0.0.1:8000/adqp/api/market-fields/1/
+Content-Type: application/json
+
+{
+  "itin_id": 202143381835,
+  "mkt_id": 20214338183501,
+  "mkt_coupons": 2,
+  "year": 2022,
+  "quarter": 4,
+  "origin_airport_id": 10721,
+  "origin_airport_seq_id": 1072102,
+  "origin_city_market_id": 30721,
+  "origin": "BOS",
+  "origin_country": "US",
+  "origin_state_fips": 25,
+  "origin_state": "MA",
+  "origin_state_name": "Massachusetts",
+  "origin_wac": 13,
+  "dest_airport_id": 10792,
+  "dest_airport_seq_id": 1079206,
+  "dest_city_market_id": 30792,
+  "dest": "BUF",
+  "dest_country": "US",
+  "dest_state_fips": 36,
+  "dest_state": "NY",
+  "dest_state_name": "New York",
+  "dest_wac": "22",
+  "airport_group": "BOS:EWR:BUF",
+  "wac_group": "13:21:22",
+  "tk_carrier_change": 0,
+  "op_carrier_change": 0,
+  "rp_carrier": "UA",
+  "tk_carrier": "UA",
+  "op_carrier": "UA",
+  "bulk_fare": 0,
+  "passengers": 1,
+  "mkt_fare": 293.37,
+  "mkt_distance": 1047,
+  "mkt_miles_flown": 1047,
+  "non_stop_miles": 634,
+  "itin_geo_type": 2,
+  "mkt_geo_type": 2,
+  "tk_carrier_group": "UA:UA",
+  "op_carrier_group": "UA:YX",
+  "mkt_distance_group": 5
+}
+### Delete a Market Field (DELETE request)
+DELETE http://127.0.0.1:8000/adqp/api/market-fields/4/
+
+### Test for QueryView - DB1B Market Query API
+
+POST http://127.0.0.1:8000/adqp/api/query/
+Content-Type: application/json
+
+{
+  "query": "SELECT * FROM adqp_marketfields"
+}
+
+### Test for Invalid Request (Missing Query)
+POST http://127.0.0.1:8000/adqp/api/query/
+Content-Type: application/json
+
+{
+}
+
+### Test for Complex Query (If Allowed by Raw SQL)
+POST http://127.0.0.1:8000/adqp/api/query/
+Content-Type: application/json
+
+{
+  "query": "SELECT * FROM adqp_marketfields WHERE year = 2021"
+}
